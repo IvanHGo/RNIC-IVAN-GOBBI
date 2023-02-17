@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -57,6 +57,14 @@ function Section({children, title}: SectionProps): JSX.Element {
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
+  console.log('El Chaky');
+
+  useEffect(() => {
+    fetch('https://pokeapi.co/api/v2/pokemon/psyduck')
+      .then(raw => raw.json())
+      .then(data => console.log(data));
+  });
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
