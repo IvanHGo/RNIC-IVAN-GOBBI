@@ -5,8 +5,9 @@
  * @format
  */
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
+  AppState,
   FlatList,
   SafeAreaView,
   StatusBar,
@@ -23,6 +24,19 @@ import styles from './styles';
 function App(): JSX.Element {
   const [tasksList, setTasksList] = useState(MockedCards);
   const isDarkMode = useColorScheme() === 'dark';
+  const [appStateVisible, setAppStateVisible] = useState('');
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', nextAppState => {
+      setAppStateVisible(nextAppState);
+      if (nextAppState !== 'active') {
+        setTasksList(MockedCards);
+      }
+    });
+    return () => {
+      subscription.remove();
+    };
+  }, [appStateVisible]);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
