@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
+  Keyboard,
   KeyboardAvoidingView,
   Text,
   TextInput,
@@ -7,12 +8,35 @@ import {
 } from 'react-native';
 import styles from './styles';
 
-const Form = (): JSX.Element => {
+const Form = (props: any): JSX.Element => {
+  const {tasksList, setTasksList} = props;
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const newTask = {
+    title: title,
+    description: description,
+    status: false,
+  };
+
+  const handleOnPress = () => {
+    setTasksList([...tasksList, newTask]);
+    Keyboard.dismiss();
+  };
+
   return (
     <KeyboardAvoidingView style={styles.card}>
-      <TextInput placeholder="Título" style={styles.input} />
-      <TextInput placeholder="Descripción" style={styles.input} />
-      <TouchableOpacity style={styles.button}>
+      <TextInput
+        placeholder="Título"
+        style={styles.input}
+        onChangeText={setTitle}
+      />
+      <TextInput
+        placeholder="Descripción"
+        style={styles.input}
+        onChangeText={setDescription}
+      />
+      <TouchableOpacity style={styles.button} onPress={handleOnPress}>
         <Text style={styles.button2}>ENVIAR</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>

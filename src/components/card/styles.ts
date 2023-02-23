@@ -20,6 +20,11 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 18,
   },
+  status: {
+    fontSize: 18,
+    padding: 5,
+    color: 'black',
+  },
 });
 
 export default styles;

@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -21,6 +21,7 @@ import Form from './src/components/form';
 import styles from './styles';
 
 function App(): JSX.Element {
+  const [tasksList, setTasksList] = useState(MockedCards);
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -40,17 +41,17 @@ function App(): JSX.Element {
         style={{
           backgroundColor: isDarkMode ? Colors.black : Colors.gray,
         }}
-        data={MockedCards}
+        data={tasksList}
         renderItem={({item, index}) => (
           <Card
-            title={`${item.title} ${index + 1}`}
+            title={`${index + 1}. ${item.title}`}
             description={item.description}
             status={item.status}
           />
         )}
         ListEmptyComponent={emptyList}
       />
-      <Form />
+      <Form tasksList={tasksList} setTasksList={setTasksList} />
     </SafeAreaView>
   );
 }

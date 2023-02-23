@@ -16,7 +16,9 @@ const Card = (props: CardProps): JSX.Element => {
       <Text numberOfLines={3} style={styles.description}>
         {description}
       </Text>
-      <Text>{status}</Text>
+      <Text style={styles.status}>
+        {status === true ? 'Realizado' : 'No realizado'}
+      </Text>
     </View>
   );
 };
