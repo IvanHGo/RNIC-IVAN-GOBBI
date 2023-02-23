@@ -8,8 +8,9 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import styles from './styles';
+import {FormProps} from './types';
 
-const Form = (props: any): JSX.Element => {
+const Form = (props: FormProps): JSX.Element => {
   const {tasksList, setTasksList} = props;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');

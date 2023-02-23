@@ -1,4 +1,6 @@
-const MockedCards = [
+import {CardProps} from './types';
+
+const MockedCards: CardProps[] = [
   {
     title: 'Task',
     description:
