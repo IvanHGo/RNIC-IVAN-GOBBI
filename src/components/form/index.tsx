@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import styles from './styles';
 
@@ -24,22 +25,38 @@ const Form = (props: any): JSX.Element => {
     Keyboard.dismiss();
   };
 
+  const secondInput = useRef<TextInput>(null);
+
   return (
-    <KeyboardAvoidingView style={styles.card}>
-      <TextInput
-        placeholder="Título"
-        style={styles.input}
-        onChangeText={setTitle}
-      />
-      <TextInput
-        placeholder="Descripción"
-        style={styles.input}
-        onChangeText={setDescription}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleOnPress}>
-        <Text style={styles.button2}>ENVIAR</Text>
-      </TouchableOpacity>
-    </KeyboardAvoidingView>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}>
+      <KeyboardAvoidingView style={styles.card}>
+        <TextInput
+          placeholder="Título"
+          style={styles.input}
+          returnKeyType={'next'}
+          onChangeText={setTitle}
+          onSubmitEditing={() => {
+            secondInput.current?.focus();
+          }}
+          blurOnSubmit={false}
+        />
+        <TextInput
+          placeholder="Descripción"
+          style={styles.input}
+          ref={secondInput}
+          onChangeText={setDescription}
+          onSubmitEditing={() => {
+            Keyboard.dismiss();
+          }}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleOnPress}>
+          <Text style={styles.button2}>ENVIAR</Text>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 };
 
