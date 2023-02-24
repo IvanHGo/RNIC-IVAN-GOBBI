@@ -20,6 +20,7 @@ import Card from './src/components/card';
 import MockedCards from './src/components/card/mockedCards';
 import Form from './src/components/form';
 import styles from './styles';
+import RNBootSplash from 'react-native-bootsplash';
 
 function App(): JSX.Element {
   const [tasksList, setTasksList] = useState(MockedCards);
@@ -37,6 +38,10 @@ function App(): JSX.Element {
       subscription.remove();
     };
   }, [appStateVisible]);
+
+  useEffect(() => {
+    RNBootSplash.hide({fade: true, duration: 600});
+  }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
