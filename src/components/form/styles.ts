@@ -19,11 +19,10 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   button: {
-    backgroundColor: 'lightgray',
+    alignSelf: 'center',
     borderRadius: 10,
     borderWidth: 0.5,
     margin: 5,
-    padding: 5,
   },
   button2: {
     textAlign: 'center',

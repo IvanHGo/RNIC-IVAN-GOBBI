@@ -2,11 +2,11 @@ import React, {useRef, useState} from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
-  Text,
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
+import CheckComponent from '../../assets/icons/check';
 import styles from './styles';
 import {FormProps} from './types';
 
@@ -54,7 +54,7 @@ const Form = (props: FormProps): JSX.Element => {
           }}
         />
         <TouchableOpacity style={styles.button} onPress={handleOnPress}>
-          <Text style={styles.button2}>ENVIAR</Text>
+          <CheckComponent fill={'green'} />
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>

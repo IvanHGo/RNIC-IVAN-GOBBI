@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 5,
     color: 'black',
+    fontFamily: 'Lato-Italic',
   },
 });
 
