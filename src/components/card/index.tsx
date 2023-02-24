@@ -1,6 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import styles from './styles';
+import {Description, Status, Title, ViewContainer} from './styles';
 
 interface CardProps {
   title: string;
@@ -11,15 +10,11 @@ interface CardProps {
 const Card = (props: CardProps): JSX.Element => {
   const {title, description, status} = props;
   return (
-    <View style={styles.card}>
-      <Text style={styles.title}>{title}</Text>
-      <Text numberOfLines={3} style={styles.description}>
-        {description}
-      </Text>
-      <Text style={styles.status}>
-        {status === true ? 'Realizado' : 'No realizado'}
-      </Text>
-    </View>
+    <ViewContainer>
+      <Title>{title}</Title>
+      <Description numberOfLines={3}>{description}</Description>
+      <Status>{status === true ? 'Realizado' : 'No realizado'}</Status>
+    </ViewContainer>
   );
 };
 
