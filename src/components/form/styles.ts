@@ -1,32 +1,23 @@
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    backgroundColor: 'lightgray',
-  },
-  card: {
-    padding: 5,
-    margin: 10,
-    borderWidth: 1,
-    borderRadius: 10,
-    backgroundColor: 'white',
-  },
-  input: {
-    borderWidth: 0.5,
-    borderRadius: 5,
-    padding: 10,
-    margin: 5,
-  },
-  button: {
-    alignSelf: 'center',
-    borderRadius: 10,
-    borderWidth: 0.5,
-    margin: 5,
-  },
-  button2: {
-    textAlign: 'center',
-  },
-});
+export const KeywordAvoid = styled.KeyboardAvoidingView`
+  padding: 5px;
+  margin: 10px;
+  border-width: 1px;
+  border-radius: 10px;
+  background-color: white;
+`;
 
-export default styles;
+export const Input = styled.TextInput`
+  border-width: 0.5px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+`;
+
+export const SendButton = styled.TouchableOpacity`
+  align-self: center;
+  border-radius: 10px;
+  border-width: 0.5px;
+  margin: 5px;
+`;

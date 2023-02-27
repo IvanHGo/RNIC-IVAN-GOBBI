@@ -1,11 +1,7 @@
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  emptyList: {
-    marginTop: 100,
-    textAlign: 'center',
-    fontSize: 38,
-  },
-});
-
-export default styles;
+export const EmptyList = styled.Text`
+  margin-top: 100px;
+  align-self: center;
+  font-size: 38px;
+`;

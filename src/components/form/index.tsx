@@ -1,13 +1,7 @@
 import React, {useRef, useState} from 'react';
-import {
-  Keyboard,
-  KeyboardAvoidingView,
-  TextInput,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {Keyboard, TextInput, TouchableWithoutFeedback} from 'react-native';
 import CheckComponent from '../../assets/icons/check';
-import styles from './styles';
+import {Input, KeywordAvoid, SendButton} from './styles';
 import {FormProps} from './types';
 
 const Form = (props: FormProps): JSX.Element => {
@@ -33,10 +27,9 @@ const Form = (props: FormProps): JSX.Element => {
       onPress={() => {
         Keyboard.dismiss();
       }}>
-      <KeyboardAvoidingView style={styles.card}>
-        <TextInput
+      <KeywordAvoid>
+        <Input
           placeholder="Título"
-          style={styles.input}
           returnKeyType={'next'}
           onChangeText={setTitle}
           onSubmitEditing={() => {
@@ -44,19 +37,18 @@ const Form = (props: FormProps): JSX.Element => {
           }}
           blurOnSubmit={false}
         />
-        <TextInput
+        <Input
           placeholder="Descripción"
-          style={styles.input}
           ref={secondInput}
           onChangeText={setDescription}
           onSubmitEditing={() => {
             Keyboard.dismiss();
           }}
         />
-        <TouchableOpacity style={styles.button} onPress={handleOnPress}>
+        <SendButton onPress={handleOnPress}>
           <CheckComponent fill={'green'} />
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+        </SendButton>
+      </KeywordAvoid>
     </TouchableWithoutFeedback>
   );
 };

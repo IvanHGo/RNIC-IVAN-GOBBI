@@ -5,7 +5,7 @@ export const ViewContainer = styled.View`
   margin: 10px;
   border-width: 1px;
   border-radius: 10px;
-  background-color: 'white';
+  background-color: white;
 `;
 
 export const Title = styled.Text`
