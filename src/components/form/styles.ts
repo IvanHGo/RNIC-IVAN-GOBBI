@@ -5,7 +5,7 @@ export const KeywordAvoid = styled.KeyboardAvoidingView`
   margin: 10px;
   border-width: 1px;
   border-radius: 10px;
-  background-color: white;
+  background-color: ${({theme}) => theme.colors.white};
 `;
 
 export const Input = styled.TextInput`

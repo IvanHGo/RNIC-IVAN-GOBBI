@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {Keyboard, TextInput, TouchableWithoutFeedback} from 'react-native';
+import {useTheme} from 'styled-components/native';
 import CheckComponent from '../../assets/icons/check';
 import {Input, KeywordAvoid, SendButton} from './styles';
 import {FormProps} from './types';
@@ -8,6 +9,7 @@ const Form = (props: FormProps): JSX.Element => {
   const {tasksList, setTasksList} = props;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const theme = useTheme();
 
   const newTask = {
     title: title,
@@ -46,7 +48,7 @@ const Form = (props: FormProps): JSX.Element => {
           }}
         />
         <SendButton onPress={handleOnPress}>
-          <CheckComponent fill={'green'} />
+          <CheckComponent fill={theme.colors.success} />
         </SendButton>
       </KeywordAvoid>
     </TouchableWithoutFeedback>

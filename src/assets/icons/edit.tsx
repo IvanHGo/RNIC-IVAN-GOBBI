@@ -5,7 +5,8 @@ const EditIcon = (props: SvgProps) => (
   <Svg
     width={24}
     height={24}
-    fill="none"
+    fill="white"
+    color="black"
     stroke="currentColor"
     strokeWidth={2}
     strokeLinecap="round"
