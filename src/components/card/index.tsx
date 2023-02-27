@@ -1,6 +1,17 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import styles from './styles';
+import {TouchableOpacity} from 'react-native';
+import EditIcon from '../../assets/icons/edit';
+import ToggleOff from '../../assets/icons/toggleOff';
+import ToggleOn from '../../assets/icons/toggleOn';
+import TrashcanIcon from '../../assets/icons/trashcan';
+import {
+  Container,
+  Description,
+  IconContainer,
+  Status,
+  Title,
+  ViewContainer,
+} from './styles';
 
 interface CardProps {
   title: string;
@@ -11,15 +22,24 @@ interface CardProps {
 const Card = (props: CardProps): JSX.Element => {
   const {title, description, status} = props;
   return (
-    <View style={styles.card}>
-      <Text style={styles.title}>{title}</Text>
-      <Text numberOfLines={3} style={styles.description}>
-        {description}
-      </Text>
-      <Text style={styles.status}>
-        {status === true ? 'Realizado' : 'No realizado'}
-      </Text>
-    </View>
+    <ViewContainer>
+      <Title>{title}</Title>
+      <Description numberOfLines={3}>{description}</Description>
+      <Container>
+        <Status>{status === true ? 'Realizado' : 'No realizado'}</Status>
+        <IconContainer>
+          <TouchableOpacity>
+            <TrashcanIcon />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <EditIcon />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            {status === true ? <ToggleOn /> : <ToggleOff />}
+          </TouchableOpacity>
+        </IconContainer>
+      </Container>
+    </ViewContainer>
   );
 };
 

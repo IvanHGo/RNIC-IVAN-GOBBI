@@ -1,19 +1,15 @@
 import React, {useRef, useState} from 'react';
-import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import styles from './styles';
+import {Keyboard, TextInput, TouchableWithoutFeedback} from 'react-native';
+import {useTheme} from 'styled-components/native';
+import CheckComponent from '../../assets/icons/check';
+import {Input, KeywordAvoid, SendButton} from './styles';
 import {FormProps} from './types';
 
 const Form = (props: FormProps): JSX.Element => {
   const {tasksList, setTasksList} = props;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const theme = useTheme();
 
   const newTask = {
     title: title,
@@ -33,10 +29,9 @@ const Form = (props: FormProps): JSX.Element => {
       onPress={() => {
         Keyboard.dismiss();
       }}>
-      <KeyboardAvoidingView style={styles.card}>
-        <TextInput
+      <KeywordAvoid>
+        <Input
           placeholder="Título"
-          style={styles.input}
           returnKeyType={'next'}
           onChangeText={setTitle}
           onSubmitEditing={() => {
@@ -44,19 +39,18 @@ const Form = (props: FormProps): JSX.Element => {
           }}
           blurOnSubmit={false}
         />
-        <TextInput
+        <Input
           placeholder="Descripción"
-          style={styles.input}
           ref={secondInput}
           onChangeText={setDescription}
           onSubmitEditing={() => {
             Keyboard.dismiss();
           }}
         />
-        <TouchableOpacity style={styles.button} onPress={handleOnPress}>
-          <Text style={styles.button2}>ENVIAR</Text>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+        <SendButton onPress={handleOnPress}>
+          <CheckComponent fill={theme.colors.success} />
+        </SendButton>
+      </KeywordAvoid>
     </TouchableWithoutFeedback>
   );
 };
